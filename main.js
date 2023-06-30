@@ -150,4 +150,18 @@ class List {
     return listToClone;
   }
 
+  //reverse implementation
+  reverse() {
+    let current = this.head;
+    let prev = this.tail;
+    for (let i = 0; i < this.length; i++) {
+      const next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+    this.head = prev;
+    if (this.length > 0) this.tail = this.head.next;
+  }
+
 
