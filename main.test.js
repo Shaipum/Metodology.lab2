@@ -57,3 +57,82 @@ describe("method append:", () => {
     expect(example.size()).toBe(0);
   });
 });
+
+//insert test
+describe("method insert:", () => {
+  let example;
+
+  beforeEach(() => {
+    example = new List();
+  });
+
+  test("insert method should insert element to an empty list", () => {
+    example.insert("a", 0);
+    expect(example.get(0)).toBe("a");
+    expect(example.size()).toBe(1);
+  });
+
+  test("insert method should insert element to an non-empty list", () => {
+    example.append("a");
+    example.append("b");
+    example.append("c");
+    example.insert("d", 1);
+    expect(example.get(1)).toBe("d");
+    expect(example.size()).toBe(4);
+  });
+
+  test("insert method shouldn't insert element with invalid type", () => {
+    example.insert("abc", 0);
+    example.insert(1, 0);
+    example.insert(true, 0);
+    example.insert(null, 0);
+    example.insert(undefined, 0);
+    example.insert(Symbol(), 0);
+
+    expect(example.get(0)).toBe(undefined);
+    expect(example.size()).toBe(0);
+  });
+
+  test("insert method should throw error for element with invalid index", () => {
+    expect(() => example.insert("a", -1)).toThrow("Invalid index");
+    expect(() => example.insert("b", 10)).toThrow("Invalid index");
+    expect(() => example.insert("a", "abc")).toThrow("Invalid index");
+    expect(() => example.insert("b", true)).toThrow("Invalid index");
+    expect(() => example.insert("c", null)).toThrow("Invalid index");
+    expect(() => example.insert("d", Symbol())).toThrow("Invalid index");
+  });
+});
+
+//delete test
+describe("method delete:", () => {
+  let example;
+
+  beforeEach(() => {
+    example = new List();
+    example.append("a");
+    example.append("b");
+    example.append("c");
+  });
+
+  test("delete method should delete element", () => {
+    example.delete(1);
+    expect(example.get(0)).toBe("a");
+    expect(example.get(1)).toBe("c");
+    expect(example.size()).toBe(2);
+  });
+
+  test("delete method should return deleted element", () => {
+    expect(example.delete(0)).toBe("a");
+    expect(example.delete(0)).toBe("b");
+    expect(example.delete(0)).toBe("c");
+  });
+
+  test("delete method should throw error for element with invalid index", () => {
+    expect(() => example.delete(-1)).toThrow("Invalid index");
+    expect(() => example.delete(3)).toThrow("Invalid index");
+    expect(() => example.delete("abc")).toThrow("Invalid index");
+    expect(() => example.delete(true)).toThrow("Invalid index");
+    expect(() => example.delete(null)).toThrow("Invalid index");
+    expect(() => example.delete(Symbol())).toThrow("Invalid index");
+  });
+});
