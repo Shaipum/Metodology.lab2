@@ -139,3 +139,15 @@ class List {
     return current.elem;
   }
 
+  //clone implementation
+  clone() {
+    const listToClone = new List();
+    let current = this.head;
+    for (let i = 0; i < this.length; i++) {
+      listToClone.append(current.elem);
+      current = current.next;
+    }
+    return listToClone;
+  }
+
+
