@@ -174,5 +174,16 @@ class List {
     return -1;
   }
 
+  //findLast implementation
+  findLast(elem) {
+    let current = this.head;
+    let lastIndex = -1;
+    for (let i = 0; i < this.length; i++) {
+      if (current.elem === elem) lastIndex = i;
+      current = current.next;
+    }
+    return lastIndex;
+  }
+
 
 
