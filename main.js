@@ -103,3 +103,28 @@ class List {
     this.length--;
     return elemToDelete;
   }
+  
+  //deleteAll implementation
+  deleteAll(elem) {
+    let current = this.head;
+    let prev = this.tail;
+    for (let i = 0; i < this.length; ) {
+      if (current.elem === elem) {
+        if (i === 0) {
+          this.head = this.head.next;
+          this.tail.next = this.head;
+          prev = this.tail;
+        } else {
+          prev.next = current.next;
+          if (i === this.length - 1) this.tail = prev;
+        }
+        this.length--;
+        i--;
+      } else {
+        prev = current;
+      }
+      current = current.next;
+      i++;
+    }
+  }
+
