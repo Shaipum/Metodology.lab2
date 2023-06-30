@@ -329,3 +329,94 @@ describe("method findLast:", () => {
   });
 });
 
+//clear test
+describe("method clear:", () => {
+  let example;
+
+  beforeEach(() => {
+    example = new List();
+  });
+
+  test("clear method should return empty list even if it's already empty", () => {
+    example.clear();
+
+    expect(example.size()).toBe(0);
+  });
+
+  test("clear method should clean all elements from list", () => {
+    example.append("a");
+    example.append("b");
+    example.append("c");
+    example.clear();
+
+    expect(example.size()).toBe(0);
+  });
+});
+
+//extend test
+describe("method extend:", () => {
+
+  test("extend method should do nothing to list if it extends empty list", () => {
+    const example1 = new List();
+    example1.append("a");
+    example1.append("b");
+    example1.append("c");
+    const example2 = new List();
+
+    example1.extend(example2)
+
+    expect(example1.size()).toBe(3);
+    expect(example1.get(0)).toBe("a");
+    expect(example1.get(1)).toBe("b");
+    expect(example1.get(2)).toBe("c");
+  });
+
+  test("extend method should concat two lists", () => {
+    const example1 = new List();
+    example1.append("a");
+    example1.append("b");
+    example1.append("c");
+    const example2 = new List();
+    example1.append("d");
+    example1.append("e");
+    example1.append("f");
+
+    example1.extend(example2)
+
+    expect(example1.size()).toBe(6);
+    expect(example1.get(0)).toBe("a");
+    expect(example1.get(1)).toBe("b");
+    expect(example1.get(2)).toBe("c");
+    expect(example1.get(3)).toBe("d");
+    expect(example1.get(4)).toBe("e");
+    expect(example1.get(5)).toBe("f");
+  });
+
+  test("extend method should leave list independent", () => {
+    const example1 = new List();
+
+    example1.append("a");
+    example1.append("b");
+    example1.append("c");
+
+    const example2 = new List();
+
+    example1.append("d");
+    example1.append("e");
+    example1.append("f");
+
+    example1.extend(example2)
+
+    example2.append("g");
+    example2.append("h");
+    example2.append("i");
+
+    expect(example1.size()).toBe(6);
+    expect(example1.get(0)).toBe("a");
+    expect(example1.get(1)).toBe("b");
+    expect(example1.get(2)).toBe("c");
+    expect(example1.get(3)).toBe("d");
+    expect(example1.get(4)).toBe("e");
+    expect(example1.get(5)).toBe("f");
+  });
+});
