@@ -270,3 +270,62 @@ describe("method reverse:", () => {
     expect(example.size()).toBe(4);
   });
 });
+
+//findFirst test
+describe("method findFirst:", () => {
+  let example;
+
+  beforeEach(() => {
+    example = new List();
+    example.append("a");
+    example.append("b");
+    example.append("c");
+  });
+
+  test("findFirst method should return nothing if there is no element in list", () => {
+    expect(example.findFirst("d")).toBe(-1);
+    expect(example.findFirst("e")).toBe(-1);
+    expect(example.findFirst("f")).toBe(-1);
+    expect(example.findFirst("g")).toBe(-1);
+  });
+
+  test("findFirst method should return first element with same value in list", () => {
+    example.append("c");
+    example.append("b");
+    example.append("a");
+
+    expect(example.findFirst("a")).toBe(0);
+    expect(example.findFirst("b")).toBe(1);
+    expect(example.findFirst("c")).toBe(2);
+  });
+});
+
+//findLast test
+describe("method findLast:", () => {
+  let example;
+
+  beforeEach(() => {
+    example = new List();
+    example.append("a");
+    example.append("b");
+    example.append("c");
+  });
+
+  test("findLast method should return nothing if there is no element in list", () => {
+    expect(example.findLast("d")).toBe(-1);
+    expect(example.findLast("e")).toBe(-1);
+    expect(example.findLast("f")).toBe(-1);
+    expect(example.findLast("g")).toBe(-1);
+  });
+
+  test("findLast method should return last element with same value in list", () => {
+    example.append("c");
+    example.append("b");
+    example.append("a");
+
+    expect(example.findLast("a")).toBe(5);
+    expect(example.findLast("b")).toBe(4);
+    expect(example.findLast("c")).toBe(3);
+  });
+});
+
