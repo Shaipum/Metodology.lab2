@@ -78,3 +78,28 @@ class List {
     }
   }
 
+
+  //delete implementation
+  delete(index) {
+    isValidIndex(index, this.length);
+    let elemToDelete = null;
+    if (this.length === 1) {
+      elemToDelete = this.head.elem;
+      this.head = null;
+      this.tail = null;
+    } else if (index === 0) {
+      elemToDelete = this.head.elem;
+      this.head = this.head.next;
+      this.tail.next = this.head;
+    } else {
+      let current = this.head;
+      for (let i = 0; i < index - 1; i++) {
+        current = current.next;
+      }
+      elemToDelete = current.next.elem;
+      current.next = current.next.next;
+      if (index === this.length - 1) this.tail = current;
+    }
+    this.length--;
+    return elemToDelete;
+  }
