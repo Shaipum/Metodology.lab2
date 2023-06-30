@@ -185,5 +185,10 @@ class List {
     return lastIndex;
   }
 
+  //clear implementation
+  clear() {
+    this.length = 0;
+  }
+
 
 
