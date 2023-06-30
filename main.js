@@ -190,5 +190,17 @@ class List {
     this.length = 0;
   }
 
+  //extend implementation
+  extend(list) {
+    let newList = list.head;
+    for (let i = 0; i < list.length; i++) {
+      this.append(newList.elem);
+      newList = newList.next;
+    }
+  }
+}
+
+module.exports = List;
+
 
 
