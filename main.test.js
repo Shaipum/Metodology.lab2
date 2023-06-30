@@ -323,9 +323,9 @@ describe("method findLast:", () => {
     example.append("b");
     example.append("a");
 
-    expect(example.findLast("a")).toBe(4);
-    expect(example.findLast("b")).toBe(3);
-    expect(example.findLast("c")).toBe(2);
+    expect(example.findLast("a")).toBe(5);
+    expect(example.findLast("b")).toBe(4);
+    expect(example.findLast("c")).toBe(3);
   });
 });
 

@@ -28,6 +28,6 @@ node main.js
 npm test
 ```
 
-## [Link](https://github.com/DanilYaremenko/SDM-lab2/actions/runs/4397237876) to the commit where the tests failed on CI
+## [Link](https://github.com/Shaipum/Metodology.lab2/commit/4c699cc02e94901c1cdf6ea42cfd9be4e7870b0b) to the commit where the tests failed on CI
 ## Conclusion
 Unit testing is an important part of software development as it helps to ensure that the code works correctly and can catch bugs before going into production. In this project, testing helps ensure that the List class works as expected after refactoring and that all operations are implemented correctly. Therefore, unit testing is not a waste of time but should become an integral part of the development process as an investment in the future.
