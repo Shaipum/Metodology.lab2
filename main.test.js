@@ -136,3 +136,69 @@ describe("method delete:", () => {
     expect(() => example.delete(Symbol())).toThrow("Invalid index");
   });
 });
+
+//deleteAll test
+describe("method deleteAll:", () => {
+  let example;
+
+  beforeEach(() => {
+    example = new List();
+  });
+
+  test("deleteAll method should delete elements with same value", () => {
+    example.append("a");
+    example.append("b");
+    example.append("a");
+    example.append("c");
+    example.append("a");
+
+    example.deleteAll("a");
+
+    expect(example.size()).toBe(2);
+    expect(example.get(0)).toBe("b");
+    expect(example.get(1)).toBe("c");
+  });
+
+  test("deleteAll method should do nothing if list is empty", () => {
+    example.deleteAll("d");
+
+    expect(example.get(0)).toBe(undefined);
+    expect(example.size()).toBe(0);
+  });
+
+  test("deleteAll method shouldn't delete elements with wrong value", () => {
+    example.append("a");
+    example.append("b");
+
+    example.deleteAll("d");
+    expect(example.size()).toBe(2);
+  });
+});
+
+//get test
+describe("method get:", () => {
+  let example;
+
+  beforeEach(() => {
+    example = new List();
+    example.append("a");
+    example.append("b");
+    example.append("c");
+  });
+
+  test("get method should return element by index", () => {
+    expect(example.get(0)).toBe("a");
+    expect(example.get(1)).toBe("b");
+    expect(example.get(2)).toBe("c");
+  });
+
+  test("get method should throw error for element with invalid index", () => {
+    expect(() => example.get(-1)).toThrow("Invalid index");
+    expect(() => example.get(3)).toThrow("Invalid index");
+    expect(() => example.get("abc")).toThrow("Invalid index");
+    expect(() => example.get(true)).toThrow("Invalid index");
+    expect(() => example.get(null)).toThrow("Invalid index");
+    expect(() => example.get(undefined)).toThrow("Invalid index");
+    expect(() => example.get(Symbol())).toThrow("Invalid index");
+  });
+});
