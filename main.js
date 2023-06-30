@@ -164,4 +164,15 @@ class List {
     if (this.length > 0) this.tail = this.head.next;
   }
 
+  //finfFind implementation
+  findFirst(elem) {
+    let current = this.head;
+    for (let i = 0; i < this.length; i++) {
+      if (current.elem === elem) return i;
+      current = current.next;
+    }
+    return -1;
+  }
+
+
 
