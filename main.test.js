@@ -202,3 +202,71 @@ describe("method get:", () => {
     expect(() => example.get(Symbol())).toThrow("Invalid index");
   });
 });
+
+//clone test
+describe("method clone:", () => {
+  test("clone method should return empty list if original was empty", () => {
+    const example = new List();
+    const clonedExample = example.clone();
+
+    expect(clonedExample.size()).toBe(0);
+  });
+
+  test("clone method should return cloned list", () => {
+    const example = new List();
+
+    example.append("a");
+    example.append("b");
+    example.append("c");
+
+    const clonedExample = example.clone();
+
+    expect(clonedExample.get(0)).toBe("a");
+    expect(clonedExample.get(1)).toBe("b");
+    expect(clonedExample.get(2)).toBe("c");
+
+    expect(clonedExample.size()).toBe(3);
+  });
+
+  test("clone method should return independent list", () => {
+    const example = new List();
+    const clonedExample = example.clone();
+
+    example.append("a");
+    example.append("b");
+    example.append("c");
+    clonedExample.append("d");
+    clonedExample.append("e");
+
+    expect(clonedExample.get(0)).toBe("d");
+    expect(clonedExample.get(1)).toBe("e");
+    expect(clonedExample.size()).toBe(2);
+  });
+});
+
+//reverse test
+describe("method reverse:", () => {
+  test("reverse method shouldn't change empty list", () => {
+    const example = new List();
+    example.reverse();
+
+    expect(example.size()).toBe(0);
+  });
+
+  test("reverse method should reverse list", () => {
+    const example = new List();
+
+    example.append("a");
+    example.append("b");
+    example.append("c");
+    example.append("d");
+    example.reverse();
+
+    expect(example.get(0)).toBe("d");
+    expect(example.get(1)).toBe("c");
+    expect(example.get(2)).toBe("b");
+    expect(example.get(3)).toBe("a");
+
+    expect(example.size()).toBe(4);
+  });
+});
