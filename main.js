@@ -128,3 +128,14 @@ class List {
     }
   }
 
+  //get implementation
+  get(index) {
+    isValidIndex(index, this.length);
+    let current = this.head;
+    if (!current) return;
+    for (let i = 0; i < index; i++) {
+      current = current.next;
+    }
+    return current.elem;
+  }
+
